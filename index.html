@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Job - Pipedrive Integration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>
+                    <span class="new-badge">NEW</span>
+                    Create a job
+                </h2>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-message" id="successMessage">
+                    Job created successfully!
+                </div>
+                
+                <form id="jobForm">
+                    <div class="form-grid">
+                        <!-- Client Details Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Client details</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="(213) 333-4455" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="test@test.test">
+                            </div>
+                        </div>
+
+                        <!-- Job Type Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Job type</h3>
+                            
+                            <div class="form-group">
+                                <select id="jobType" name="jobType" required>
+                                    <option value="">Select Job Type</option>
+                                    <option value="recall">Recall Job</option>
+                                    <option value="service">Service Call</option>
+                                    <option value="inspection">Inspection</option>
+                                    <option value="maintenance">Maintenance</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select id="jobSource" name="jobSource" required>
+                                    <option value="">Select Source</option>
+                                    <option value="gl_pinellas">GL Pinellas</option>
+                                    <option value="online">Online</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="walkin">Walk-in</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="jobDescription" name="jobDescription" placeholder="Job description"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Service Location Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Service location</h3>
+                            
+                            <div class="form-group">
+                                <input type="text" id="address" name="address" placeholder="123 William Street, New York, NY, USA" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="city" name="city" placeholder="New York" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="state" name="state" placeholder="New York" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="zipCode" name="zipCode" placeholder="10038" required>
+                                </div>
+                                <div class="form-group">
+                                    <select id="area" name="area">
+                                        <option value="tampa">Tampa</option>
+                                        <option value="orlando">Orlando</option>
+                                        <option value="miami">Miami</option>
+                                        <option value="jacksonville">Jacksonville</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scheduled Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">Scheduled</h3>
+                            
+                            <div class="form-group">
+                                <input type="date" id="startDate" name="startDate" required>
+                            </div>
+                            
+                            <div class="time-inputs">
+                                <div class="form-group">
+                                    <select id="startTime" name="startTime" required>
+                                        <option value="08:00">08:00</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00" selected>15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select id="endTime" name="endTime" required>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00" selected>15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select id="testSelect" name="testSelect" required>
+                                    <option value="" disabled selected>Select technician</option>                                    
+                                    <option value="tech1">Technician #1</option>
+                                    <option value="tech2">Technician #2</option>
+                                    <option value="tech3">Technician #3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="saveBtn">Save as draft</button>
+                <button class="btn btn-primary" id="submitBtn">
+                    Request is sent
+                    <span class="loading" id="loadingSpinner">
+                        <span class="spinner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
