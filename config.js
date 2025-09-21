@@ -7,12 +7,6 @@ const CONFIG = {
     
     CUSTOM_FIELDS: {},
     
-    USER_MAP: {
-        "Technician #1": 123,  
-        "Technician #2": 456, 
-        "Technician #3": 789   
-    },
-    
     FORM: {
         AUTO_SAVE_DRAFT: true,
         AUTO_SAVE_INTERVAL: 30000, 
@@ -43,3 +37,4 @@ function isConfigured() {
     return CONFIG.PIPEDRIVE.API_TOKEN !== "YOUR_API_TOKEN_HERE" && 
            CONFIG.PIPEDRIVE.COMPANY_DOMAIN !== "YOUR_COMPANY_DOMAIN";
 }
+
