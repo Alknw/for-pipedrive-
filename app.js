@@ -38,7 +38,7 @@
     }
 })();
 
-document.getElementById("submitBtn").addEventListener("click", async () => {
+document.getElementById("submitBtn").addEventListener("submit", async () => {
     if (!utils.validateForm("jobForm")) {
         utils.showNotification("Please fill all required fields", "error");
         return;
@@ -85,3 +85,4 @@ document.getElementById("saveBtn").addEventListener("click", () => {
         }, 100);
     }
 });
+
