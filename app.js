@@ -1,32 +1,40 @@
 (function() {
-    if (typeof PipedriveSDK !== 'undefined') {
-        PipedriveSDK.initialize({
-            appName: 'Workiz'
-        }).then(() => {
-            console.log('✅ Pipedrive SDK initialized successfully');
-        }).catch((error) => {
-            console.error('❌ Failed to initialize Pipedrive SDK:', error);
-        });
+    const AppExtensionsSDK = typeof window !== 'undefined' && window.AppExtensionsSDK 
+        ? window.AppExtensionsSDK 
+        : typeof global !== 'undefined' && global.AppExtensionsSDK;
 
-        function resizePanel() {
-            const height = Math.min(document.body.scrollHeight + 50, 750); 
-            PipedriveSDK.resize(height);
-        }
+    if (AppExtensionsSDK) {
+        new AppExtensionsSDK().initialize()
+            .then((sdk) => {
+                console.log('✅ Pipedrive App Extensions SDK initialized successfully');
+                window.pipedriveSDK = sdk; 
+                
+                function resizePanel() {
+                    if (window.pipedriveSDK) {
+                        const height = Math.min(document.body.scrollHeight + 50, 750);
+                        window.pipedriveSDK.execute('RESIZE', { height: height })
+                            .catch(err => console.log('Resize failed:', err));
+                    }
+                }
 
-        window.addEventListener('load', function() {
-            setTimeout(resizePanel, 100); 
-        });
+                window.addEventListener('load', function() {
+                    setTimeout(resizePanel, 100);
+                });
 
-        window.addEventListener('resize', resizePanel);
+                window.addEventListener('resize', resizePanel);
 
-        const originalSubmit = document.getElementById("submitBtn");
-        if (originalSubmit) {
-            originalSubmit.addEventListener('click', function() {
-                setTimeout(resizePanel, 500); 
+                const originalSubmit = document.getElementById("submitBtn");
+                if (originalSubmit) {
+                    originalSubmit.addEventListener('click', function() {
+                        setTimeout(resizePanel, 500);
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error('❌ Failed to initialize Pipedrive App Extensions SDK:', error);
             });
-        }
     } else {
-        console.log('ℹ️ Pipedrive SDK not available - running in standalone mode');
+        console.log('ℹ️ Pipedrive App Extensions SDK not available - running in standalone mode');
     }
 })();
 
@@ -50,10 +58,11 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
         utils.resetForm("jobForm");
         utils.clearDraft();
         
-        if (typeof PipedriveSDK !== 'undefined') {
+        if (window.pipedriveSDK) {
             setTimeout(() => {
                 const height = Math.min(document.body.scrollHeight + 50, 750);
-                PipedriveSDK.resize(height);
+                window.pipedriveSDK.execute('RESIZE', { height: height })
+                    .catch(err => console.log('Resize failed:', err));
             }, 500);
         }
     } catch (err) {
@@ -68,10 +77,11 @@ document.getElementById("saveBtn").addEventListener("click", () => {
     utils.saveDraft(formData);
     utils.showNotification("Draft saved locally", "success");
     
-    if (typeof PipedriveSDK !== 'undefined') {
+    if (window.pipedriveSDK) {
         setTimeout(() => {
             const height = Math.min(document.body.scrollHeight + 50, 750);
-            PipedriveSDK.resize(height);
+            window.pipedriveSDK.execute('RESIZE', { height: height })
+                .catch(err => console.log('Resize failed:', err));
         }, 100);
     }
 });
