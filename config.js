@@ -1,4 +1,3 @@
-
 const CONFIG = {
     PIPEDRIVE: {
         API_TOKEN: "bc30c534bd70214b2558a752cb4e61b53678a7f1", 
@@ -6,19 +5,12 @@ const CONFIG = {
         API_VERSION: "v1"
     },
     
-    CUSTOM_FIELDS: {
-        JOB_TYPE: "abc123",
-        JOB_SOURCE: "def456",
-        JOB_DESCRIPTION: "ghi789",
-        SERVICE_ADDRESS: "jkl012",
-        SERVICE_CITY: "mno345",
-        SERVICE_STATE: "pqr678",
-        SERVICE_ZIP: "stu901",
-        SERVICE_AREA: "vwx234",
-        SCHEDULED_DATE: "yza567",
-        START_TIME: "bcd890",
-        END_TIME: "efg123",
-        ASSIGNEE: "hij456"
+    CUSTOM_FIELDS: {},
+    
+    USER_MAP: {
+        "Technician #1": 123,  
+        "Technician #2": 456, 
+        "Technician #3": 789   
     },
     
     FORM: {
@@ -32,7 +24,8 @@ const CONFIG = {
         DEALS: "/deals",
         PERSONS: "/persons",
         ORGANIZATIONS: "/organizations",
-        ACTIVITIES: "/activities"
+        ACTIVITIES: "/activities",
+        USERS: "/users" 
     },
     
     DEFAULTS: {
