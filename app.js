@@ -1,6 +1,3 @@
-// app.js
-
-// Request is sent
 document.getElementById("submitBtn").addEventListener("click", async () => {
     if (!utils.validateForm("jobForm")) {
         utils.showNotification("Please fill all required fields", "error");
@@ -27,9 +24,9 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
     }
 });
 
-// Save as draft
 document.getElementById("saveBtn").addEventListener("click", () => {
     const formData = utils.collectFormData();
-    utils.saveDraft(formData); // assuming you have this util
+    utils.saveDraft(formData); 
     utils.showNotification("Draft saved locally", "success");
 });
+
