@@ -24,7 +24,6 @@
                 
                 <form id="jobForm">
                     <div class="form-grid">
-                        <!-- Client Details Section -->
                         <div class="form-section">
                             <h3 class="section-title">Client details</h3>
                             
@@ -45,8 +44,6 @@
                                 <input type="email" id="email" name="email" placeholder="test@test.test">
                             </div>
                         </div>
-
-                        <!-- Job Type Section -->
                         <div class="form-section">
                             <h3 class="section-title">Job type</h3>
                             
@@ -75,7 +72,6 @@
                             </div>
                         </div>
 
-                        <!-- Service Location Section -->
                         <div class="form-section">
                             <h3 class="section-title">Service location</h3>
                             
@@ -107,7 +103,6 @@
                             </div>
                         </div>
 
-                        <!-- Scheduled Section -->
                         <div class="form-section">
                             <h3 class="section-title">Scheduled</h3>
                             
@@ -161,7 +156,7 @@
             
             <div class="modal-footer">
                 <button class="btn btn-secondary" id="saveBtn">Save as draft</button>
-                <button class="btn btn-primary" id="submitBtn">
+                <button type="button" class="btn btn-primary" id="submitBtn">
                     Request is sent
                     <span class="loading" id="loadingSpinner">
                         <span class="spinner"></span>
@@ -170,7 +165,6 @@
             </div>
         </div>
     </div>
-
     <script src="config.js"></script>
     <script src="utils.js"></script>
     <script src="api.js"></script>

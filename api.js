@@ -1,7 +1,4 @@
-// Pipedrive API integration functions
-
 const pipedriveAPI = {
-    // Create a person in Pipedrive
     createPerson: async function(formData) {
         const personData = {
             name: `${formData.client.firstName} ${formData.client.lastName}`,
@@ -28,7 +25,6 @@ const pipedriveAPI = {
         }
     },
 
-    // Create a deal in Pipedrive
     createDeal: async function(formData, personId) {
         const dealData = {
             title: `Job - ${formData.client.firstName} ${formData.client.lastName}`,
@@ -37,7 +33,6 @@ const pipedriveAPI = {
             currency: CONFIG.DEFAULTS.CURRENCY,
             status: CONFIG.DEFAULTS.DEAL_STATUS,
 
-            // Custom fields
             ...(CONFIG.CUSTOM_FIELDS.JOB_TYPE && { [CONFIG.CUSTOM_FIELDS.JOB_TYPE]: formData.job.type }),
             ...(CONFIG.CUSTOM_FIELDS.JOB_SOURCE && { [CONFIG.CUSTOM_FIELDS.JOB_SOURCE]: formData.job.source }),
             ...(CONFIG.CUSTOM_FIELDS.JOB_DESCRIPTION && { [CONFIG.CUSTOM_FIELDS.JOB_DESCRIPTION]: formData.job.description }),
@@ -71,7 +66,6 @@ const pipedriveAPI = {
         }
     },
 
-    // Create an activity (scheduled job) in Pipedrive
     createActivity: async function(formData, dealId, personId) {
         const activityData = {
             subject: `Job - ${formData.job.type}`,
@@ -106,7 +100,6 @@ const pipedriveAPI = {
     }
 };
 
-// Helper to calculate duration from start/end time (HH:mm → HH:mm)
 function calculateDuration(start, end) {
     try {
         const [sh, sm] = start.split(':').map(Number);
