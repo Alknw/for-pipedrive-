@@ -64,7 +64,6 @@ const pipedriveAPI = {
             duration: formData.schedule.endTime && formData.schedule.startTime
                 ? calculateDuration(formData.schedule.startTime, formData.schedule.endTime)
                 : null,
-            assigned_to_user_id: formData.schedule.assignee || null
         };
 
         try {
@@ -101,4 +100,5 @@ function calculateDuration(start, end) {
         return null;
     }
 }
+
 
