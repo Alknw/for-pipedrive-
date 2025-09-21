@@ -1,7 +1,7 @@
 const CONFIG = {
     PIPEDRIVE: {
         API_TOKEN: "bc30c534bd70214b2558a752cb4e61b53678a7f1", 
-        COMPANY_DOMAIN: "ansarulakov-sandbox", 
+        COMPANY_DOMAIN: "ansarulakov", 
         API_VERSION: "v1"
     },
     
@@ -37,5 +37,6 @@ function isConfigured() {
     return CONFIG.PIPEDRIVE.API_TOKEN !== "YOUR_API_TOKEN_HERE" && 
            CONFIG.PIPEDRIVE.COMPANY_DOMAIN !== "YOUR_COMPANY_DOMAIN";
 }
+
 
 
