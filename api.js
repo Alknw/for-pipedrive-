@@ -31,20 +31,7 @@ const pipedriveAPI = {
             person_id: personId,
             value: 0,
             currency: CONFIG.DEFAULTS.CURRENCY,
-            status: CONFIG.DEFAULTS.DEAL_STATUS,
-
-            ...(CONFIG.CUSTOM_FIELDS.JOB_TYPE && { [CONFIG.CUSTOM_FIELDS.JOB_TYPE]: formData.job.type }),
-            ...(CONFIG.CUSTOM_FIELDS.JOB_SOURCE && { [CONFIG.CUSTOM_FIELDS.JOB_SOURCE]: formData.job.source }),
-            ...(CONFIG.CUSTOM_FIELDS.JOB_DESCRIPTION && { [CONFIG.CUSTOM_FIELDS.JOB_DESCRIPTION]: formData.job.description }),
-            ...(CONFIG.CUSTOM_FIELDS.SERVICE_ADDRESS && { [CONFIG.CUSTOM_FIELDS.SERVICE_ADDRESS]: formData.location.address }),
-            ...(CONFIG.CUSTOM_FIELDS.SERVICE_CITY && { [CONFIG.CUSTOM_FIELDS.SERVICE_CITY]: formData.location.city }),
-            ...(CONFIG.CUSTOM_FIELDS.SERVICE_STATE && { [CONFIG.CUSTOM_FIELDS.SERVICE_STATE]: formData.location.state }),
-            ...(CONFIG.CUSTOM_FIELDS.SERVICE_ZIP && { [CONFIG.CUSTOM_FIELDS.SERVICE_ZIP]: formData.location.zipCode }),
-            ...(CONFIG.CUSTOM_FIELDS.SERVICE_AREA && { [CONFIG.CUSTOM_FIELDS.SERVICE_AREA]: formData.location.area }),
-            ...(CONFIG.CUSTOM_FIELDS.SCHEDULED_DATE && { [CONFIG.CUSTOM_FIELDS.SCHEDULED_DATE]: formData.schedule.startDate }),
-            ...(CONFIG.CUSTOM_FIELDS.START_TIME && { [CONFIG.CUSTOM_FIELDS.START_TIME]: formData.schedule.startTime }),
-            ...(CONFIG.CUSTOM_FIELDS.END_TIME && { [CONFIG.CUSTOM_FIELDS.END_TIME]: formData.schedule.endTime }),
-            ...(CONFIG.CUSTOM_FIELDS.ASSIGNEE && { [CONFIG.CUSTOM_FIELDS.ASSIGNEE]: formData.schedule.assignee })
+            status: CONFIG.DEFAULTS.DEAL_STATUS
         };
 
         try {
@@ -114,3 +101,4 @@ function calculateDuration(start, end) {
         return null;
     }
 }
+
